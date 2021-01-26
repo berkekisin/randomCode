@@ -9,13 +9,12 @@ def backtrack(space):
     global sol, z
 
     for i in range(len(space)):
-        next_num = space[0]
+        next_num = space[i]
         if sum(sol) + next_num <= num:
 
             sol.append(next_num)
             curr_sum = sum(sol)
-            new_space = space.copy()
-            new_space.remove(next_num)
+            new_space = space[i+1:]
 
             if curr_sum == num:
                 z += 1
@@ -24,7 +23,6 @@ def backtrack(space):
                 backtrack(new_space)
 
             sol.remove(next_num)
-            space.remove(next_num)
 
 
 backtrack(s)
